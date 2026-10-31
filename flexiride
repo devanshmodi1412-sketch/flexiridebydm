@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexiRide | Own the Ride. Not the Hassle.</title>
+<meta name="description" content="Discover FlexiRide, a proposed flexible yearly two-wheeler membership platform.">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: #101010;
+    padding: 18px 6%;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: #ed2939;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #ed2939;
+}
+
+section {
+    padding: 65px 8%;
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+}
+
+h2 {
+    color: #ed2939;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+p {
+    color: #c5c5c5;
+    margin-bottom: 15px;
+}
+
+.hero {
+    text-align: center;
+    padding: 130px 8%;
+    background:
+    linear-gradient(#000b, #000b),
+    url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 6vw, 65px);
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #ed2939;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto 25px;
+}
+
+.button {
+    display: inline-block;
+    background: #ed2939;
+    color: white;
+    padding: 12px 24px;
+    margin: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #ed2939;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: transparent;
+    color: #ed2939;
+}
+
+.dark {
+    background: #111;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #ed2939;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card h3 {
+    color: #ed2939;
+    margin-bottom: 10px;
+}
+
+.card a {
+    color: #ed2939;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box {
+    background: #181818;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.box h3 {
+    color: #ed2939;
+    margin-bottom: 10px;
+}
+
+ul, ol {
+    padding-left: 25px;
+}
+
+li {
+    margin: 10px 0;
+    color: #ccc;
+}
+
+.membership {
+    background: linear-gradient(120deg, #241014, #111);
+    border: 1px solid #6c2029;
+    border-radius: 10px;
+    padding: 35px;
+}
+
+details {
+    background: #181818;
+    padding: 18px;
+    margin: 12px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details p {
+    margin-top: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: #181818;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 130px;
+}
+
+button {
+    background: #ed2939;
+    color: white;
+    padding: 13px 25px;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    background: #050505;
+    padding: 40px 15px;
+    border-top: 1px solid #333;
+}
+
+footer h2 {
+    margin-bottom: 5px;
+}
+
+.category-page {
+    display: none;
+}
+
+.category-page.active {
+    display: block;
+}
+
+.category-hero {
+    text-align: center;
+    padding: 100px 8%;
+    background: linear-gradient(#000b,#000b),
+    url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1500&q=80") center/cover;
+}
+
+.category-hero h1 {
+    font-size: clamp(35px, 6vw, 60px);
+}
+
+.category-hero span {
+    color: #ed2939;
+}
+
+.back {
+    display: inline-block;
+    color: #ed2939;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.small-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.small-categories a {
+    color: #ed2939;
+    text-decoration: none;
+}
+
+@media(max-width:900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav div:last-child {
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .cards, .grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 45px 6%;
+    }
+
+    .hero {
+        padding: 100px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">FLEXIRIDE</div>
+    <div>
+        <a href="#home" onclick="showHome()">Home</a>
+        <a href="#how" onclick="showHome()">How It Works</a>
+        <a href="#membership" onclick="showHome()">Membership</a>
+        <a href="#categories" onclick="showHome()">Categories</a>
+        <a href="#about" onclick="showHome()">About</a>
+        <a href="#faq" onclick="showHome()">FAQs</a>
+        <a href="#contact" onclick="showHome()">Contact</a>
+    </div>
+</nav>
+</header>
+
+<!-- HOMEPAGE -->
+
+<main id="homepage">
+
+<section class="hero" id="home">
+    <h1>Your Ride. Your Choice.<br><span>Your Flexibility.</span></h1>
+
+    <p>
+        Experience a flexible two-wheeler membership designed
+        around your mobility needs. Explore different vehicle
+        categories through a structured yearly membership model.
+    </p>
+
+    <a href="#categories" class="button">Explore Memberships</a>
+    <a href="#how" class="button">How It Works</a>
+</section>
+
+<section id="about">
+    <h2>What is FlexiRide?</h2>
+
+    <p>
+        FlexiRide is a proposed two-wheeler membership platform
+        that aims to provide flexible access to different
+        categories of scooters and motorcycles through a yearly
+        membership model.
+    </p>
+
+    <p>
+        Unlike traditional vehicle ownership, FlexiRide aims to
+        offer access to eligible vehicles within a selected
+        category, subject to availability and membership terms.
+    </p>
+
+    <h3>Our Philosophy</h3>
+
+    <p>
+        FlexiRide aims to make two-wheeler mobility more flexible
+        through convenience, customer focus and transparency.
+    </p>
+</section>
+
+<section class="dark">
+    <h2>Why FlexiRide?</h2>
+
+    <div class="grid">
+        <div class="box">
+            <h3>More Choices</h3>
+            <p>Explore different eligible two-wheelers within your selected category.</p>
+        </div>
+
+        <div class="box">
+            <h3>Yearly Membership</h3>
+            <p>A structured yearly membership approach.</p>
+        </div>
+
+        <div class="box">
+            <h3>Maintenance</h3>
+            <p>Proposed maintenance and servicing benefits according to membership terms.</p>
+        </div>
+
+        <div class="box">
+            <h3>Breakdown Support</h3>
+            <p>Assistance subject to the final service arrangement.</p>
+        </div>
+
+        <div class="box">
+            <h3>Flexible Selection</h3>
+            <p>Vehicle selection subject to availability and operating policies.</p>
+        </div>
+
+        <div class="box">
+            <h3>Convenience</h3>
+            <p>Reduced responsibilities associated with individual vehicle ownership.</p>
+        </div>
+    </div>
+</section>
+
+<section id="how">
+    <h2>How FlexiRide Works</h2>
+
+    <ol>
+        <li>Explore membership categories.</li>
+        <li>Select a suitable category.</li>
+        <li>Review membership terms and pricing.</li>
+        <li>Complete the membership process.</li>
+        <li>Request or book an available vehicle.</li>
+        <li>Use the vehicle according to membership conditions.</li>
+        <li>Access applicable servicing and support.</li>
+    </ol>
+
+    <p>Vehicle allocation depends on availability and operational policies.</p>
+</section>
+
+<section id="membership" class="dark">
+    <div class="membership">
+        <h2>Our Yearly Membership Model</h2>
+
+        <p>
+            FlexiRide follows a proposed yearly membership structure.
+            Customers select a category according to their mobility
+            requirements.
+        </p>
+
+        <ul>
+            <li>Yearly membership subscription.</li>
+            <li>Category-based vehicle access.</li>
+            <li>Vehicle allocation subject to confirmation.</li>
+            <li>Maintenance and servicing as specified in the plan.</li>
+            <li>Applicable breakdown support.</li>
+            <li>No per-kilometre membership pricing.</li>
+        </ul>
+
+        <p>
+            Membership prices, deposits, security requirements,
+            usage restrictions and cancellation terms will be
+            communicated before launch.
+        </p>
+    </div>
+</section>
+
+<section id="categories">
+    <h2>Explore Our Membership Categories</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80" alt="Daily motorcycle">
+            <div class="card-content">
+                <h3>DAILY</h3>
+                <p>Your Everyday Ride, Simplified.</p>
+                <a href="#daily" onclick="showPage('daily')">Explore Daily →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=700&q=80" alt="Performance motorcycle">
+            <div class="card-content">
+                <h3>PRO</h3>
+                <p>Step Up Your Riding Experience.</p>
+                <a href="#pro" onclick="showPage('pro')">Explore Pro →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80" alt="Premium motorcycle">
+            <div class="card-content">
+                <h3>PREMIUM</h3>
+                <p>Experience the Premium Side of Riding.</p>
+                <a href="#premium" onclick="showPage('premium')">Explore Premium →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=700&q=80" alt="Electric mobility">
+            <div class="card-content">
+                <h3>ELECTRIC</h3>
+                <p>Move Towards Electric Mobility.</p>
+                <a href="#electric" onclick="showPage('electric')">Explore Electric →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="faq" class="dark">
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+        <summary>What is FlexiRide?</summary>
+        <p>FlexiRide is a proposed yearly two-wheeler membership platform.</p>
+    </details>
+
+    <details>
+        <summary>How does yearly membership work?</summary>
+        <p>Members select a category and access eligible vehicles according to membership conditions.</p>
+    </details>
+
+    <details>
+        <summary>What are the membership categories?</summary>
+        <p>Daily, Pro, Premium and Electric.</p>
+    </details>
+
+    <details>
+        <summary>Can I change my vehicle?</summary>
+        <p>Vehicle changes depend on the final membership rules and availability. Guaranteed exchanges are not promised.</p>
+    </details>
+
+    <details>
+        <summary>Is maintenance included?</summary>
+        <p>Maintenance and servicing are proposed benefits subject to final membership terms.</p>
+    </details>
+
+    <details>
+        <summary>Is there a per-kilometre charge?</summary>
+        <p>The proposed membership model does not use per-kilometre membership pricing.</p>
+    </details>
+
+    <details>
+        <summary>Are vehicles available immediately?</summary>
+        <p>No. Vehicle availability will depend on operational readiness and confirmation.</p>
+    </details>
+
+    <details>
+        <summary>How does Electric membership work?</summary>
+        <p>It is intended to provide access to eligible electric two-wheelers, subject to vehicle and charging infrastructure availability.</p>
+    </details>
+
+    <details>
+        <summary>What happens if a vehicle breaks down?</summary>
+        <p>Breakdown assistance will depend on the final service arrangement.</p>
+    </details>
+
+    <details>
+        <summary>How can I become a member?</summary>
+        <p>Membership information will be announced when FlexiRide officially launches.</p>
+    </details>
+</section>
+
+<section id="contact">
+    <h2>Contact FlexiRide</h2>
+
+    <p>Have a question, suggestion or business enquiry?</p>
+
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Your Phone Number" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Submit Enquiry</button>
+    </form>
+
+    <p id="message"></p>
+    <p>Demonstration form only. Your enquiry is not transmitted.</p>
+</section>
+
+</main>
+
+<!-- DAILY PAGE -->
+
+<main class="category-page" id="daily">
+    <section class="category-hero">
+        <h1>DAILY<span>.</span></h1>
+        <h3>Your Everyday Ride, Simplified.</h3>
+        <p>Practical mobility for everyday commuting.</p>
+    </section>
+
+    <section>
+        <h2>Daily Membership</h2>
+        <p>Designed for everyday commuting and regular city transportation.</p>
+
+        <h3>Suitable Customers</h3>
+        <ul>
+            <li>Daily commuters.</li>
+            <li>Students and professionals.</li>
+            <li>Regular city travellers.</li>
+        </ul>
+
+        <h3>Suitable Vehicle Types</h3>
+        <ul>
+            <li>Commuter motorcycles.</li>
+            <li>Everyday scooters.</li>
+        </ul>
+
+        <h3>Membership Benefits</h3>
+        <ul>
+            <li>Category-based vehicle access.</li>
+            <li>Proposed servicing and maintenance support.</li>
+            <li>Eligible vehicle selection subject to availability.</li>
+        </ul>
+
+        <h3>How It Works</h3>
+        <p>Select Daily, review the membership conditions and request an available vehicle.</p>
+
+        <h3>Availability and Limitations</h3>
+        <p>Vehicle inventory, access and allocation depend on operational readiness and availability.</p>
+
+        <h3>Daily FAQs</h3>
+        <details>
+            <summary>Is Daily suitable for commuting?</summary>
+            <p>Yes. It is intended for everyday commuting requirements.</p>
+        </details>
+        <details>
+            <summary>Can I choose a scooter?</summary>
+            <p>Eligible scooters may be available depending on fleet inventory.</p>
+        </details>
+    </section>
+</main>
+
+<!-- PRO PAGE -->
+
+<main class="category-page" id="pro">
+    <section class="category-hero">
+        <h1>PRO<span>.</span></h1>
+        <h3>Step Up Your Riding Experience.</h3>
+        <p>Performance-oriented and premium city mobility.</p>
+    </section>
+
+    <section>
+        <h2>Pro Membership</h2>
+        <p>Designed for customers who prefer performance-oriented motorcycles and premium city riding.</p>
+
+        <h3>Suitable Customers</h3>
+        <ul>
+            <li>Performance enthusiasts.</li>
+            <li>Premium city commuters.</li>
+            <li>Riders seeking a more engaging experience.</li>
+        </ul>
+
+        <h3>Suitable Vehicle Types</h3>
+        <ul>
+            <li>Performance-oriented motorcycles.</li>
+            <li>Premium scooters.</li>
+        </ul>
+
+        <p>Any vehicle examples shown are illustrative and do not represent confirmed inventory.</p>
+
+        <h3>Membership Benefits</h3>
+        <ul>
+            <li>Pro category vehicle access.</li>
+            <li>Proposed servicing support.</li>
+            <li>Vehicle selection subject to availability.</li>
+        </ul>
+
+        <h3>100-Hour Bonus / Top-up</h3>
+        <p>A proposed 100-hour bonus/top-up feature is subject to final membership policy and confirmation.</p>
+
+        <h3>Availability and Limitations</h3>
+        <p>Vehicle access, eligibility and applicable conditions will be communicated before membership activation.</p>
+
+        <h3>Pro FAQs</h3>
+        <details>
+            <summary>Does Pro include performance motorcycles?</summary>
+            <p>The category is intended for performance-oriented vehicles, subject to fleet availability.</p>
+        </details>
+        <details>
+            <summary>Is the 100-hour bonus confirmed?</summary>
+            <p>No. It is a proposed feature subject to final policy.</p>
+        </details>
+    </section>
+</main>
+
+<!-- PREMIUM PAGE -->
+
+<main class="category-page" id="premium">
+    <section class="category-hero">
+        <h1>PREMIUM<span>.</span></h1>
+        <h3>Experience the Premium Side of Riding.</h3>
+        <p>Luxury-oriented two-wheeler mobility.</p>
+    </section>
+
+    <section>
+        <h2>Premium Membership</h2>
+        <p>Designed for customers interested in luxury and high-end two-wheelers.</p>
+
+        <h3>Suitable Customers</h3>
+        <ul>
+            <li>Luxury motorcycle enthusiasts.</li>
+            <li>Premium riding preferences.</li>
+            <li>Customers seeking high-end vehicles.</li>
+        </ul>
+
+        <h3>Suitable Vehicle Types</h3>
+        <ul>
+            <li>Luxury motorcycles.</li>
+            <li>High-end scooters.</li>
+        </ul>
+
+        <p>Vehicle examples are illustrative, not confirmed inventory.</p>
+
+        <h3>Membership Benefits</h3>
+        <ul>
+            <li>Premium category vehicle access.</li>
+            <li>Proposed maintenance and servicing benefits.</li>
+            <li>Eligible vehicle selection subject to availability.</li>
+        </ul>
+
+        <h3>Membership Conditions</h3>
+        <p>Eligibility, usage limits, deposits and any bonus features will be communicated before membership activation.</p>
+
+        <h3>Availability and Limitations</h3>
+        <p>Premium vehicle allocation will depend on fleet availability and operational policies.</p>
+
+        <h3>Premium FAQs</h3>
+        <details>
+            <summary>Does Premium include luxury bikes?</summary>
+            <p>The category is intended for luxury-oriented vehicles, subject to availability.</p>
+        </details>
+        <details>
+            <summary>Is premium vehicle access guaranteed?</summary>
+            <p>No. Vehicle allocation is subject to availability and membership conditions.</p>
+        </details>
+    </section>
+</main>
+
+<!-- ELECTRIC PAGE -->
+
+<main class="category-page" id="electric">
+    <section class="category-hero">
+        <h1>ELECTRIC<span>.</span></h1>
+        <h3>Move Towards Electric Mobility.</h3>
+        <p>Explore the possibilities of electric two-wheeler access.</p>
+    </section>
+
+    <section>
+        <h2>Electric Membership</h2>
+        <p>Dedicated to customers interested in electric scooters and motorcycles.</p>
+
+        <h3>Suitable Customers</h3>
+        <ul>
+            <li>Electric mobility enthusiasts.</li>
+            <li>City commuters.</li>
+            <li>People exploring EV alternatives.</li>
+        </ul>
+
+        <h3>Suitable Vehicle Types</h3>
+        <ul>
+            <li>Electric scooters.</li>
+            <li>Electric motorcycles.</li>
+        </ul>
+
+        <h3>Membership Benefits</h3>
+        <ul>
+            <li>Electric category vehicle access.</li>
+            <li>Proposed maintenance support.</li>
+            <li>Vehicle allocation subject to availability.</li>
+        </ul>
+
+        <h3>Charging Information</h3>
+        <p>Charging arrangements, charging costs and charging infrastructure will depend on the selected vehicle and operational policies.</p>
+
+        <h3>Availability and Limitations</h3>
+        <p>The actual EV lineup will depend on fleet availability, charging infrastructure and operational readiness.</p>
+
+        <h3>Electric FAQs</h3>
+        <details>
+            <summary>Will electric scooters be available?</summary>
+            <p>The category is planned for electric scooters and motorcycles, subject to operational readiness.</p>
+        </details>
+        <details>
+            <summary>Is charging included?</summary>
+            <p>Charging arrangements and costs will be explained in the final membership terms.</p>
+        </details>
+    </section>
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    <h2>FLEXIRIDE</h2>
+    <p>Own the Ride. Not the Hassle.</p>
+    <p>© 2026 FlexiRide. All Rights Reserved.</p>
+    <p>Concept website. Memberships and services are subject to official launch.</p>
+</footer>
+
+<script>
+
+// Show homepage
+function showHome() {
+    document.getElementById("homepage").style.display = "block";
+
+    document.querySelectorAll(".category-page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    window.scrollTo(0, 0);
+}
+
+// Show individual category
+function showPage(category) {
+    document.getElementById("homepage").style.display = "none";
+
+    document.querySelectorAll(".category-page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(category).classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+// Handle direct category links
+function handleRoute() {
+    var category = window.location.hash.substring(1);
+
+    if (["daily", "pro", "premium", "electric"].includes(category)) {
+        showPage(category);
+    } else {
+        showHome();
+    }
+}
+
+window.addEventListener("hashchange", handleRoute);
+window.addEventListener("load", handleRoute);
+
+// Contact form demonstration
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("message").textContent =
+        "This is a demo form. No enquiry has been sent.";
+
+    this.reset();
+});
+
+</script>
+
+</body>
+</html>
